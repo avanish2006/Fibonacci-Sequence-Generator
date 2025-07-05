@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Sequence Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #139d96;
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #1e1e2f;
+            border: 2px solid #00bcd4;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 188, 212, 0.3);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            color: #00bcd4;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+            border: 4px solid #00bcd4;
+            border-radius: 8px;
+            background-color: #2e2e3e;
+            color: #fff;
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #00bcd4;
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #e0ffff;
+            word-wrap: break-word;
+            border-top: 1px solid #00bcd4;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Fibonacci Generator</h1>
+
+        <input type="number" id="termCount" placeholder="Enter number of terms" min="1">
+        <br>
+        <button onclick="generateFibonacci()">Generate</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateFibonacci() {
+            const n = parseInt(document.getElementById('termCount').value);
+            const resultDiv = document.getElementById('result');
+
+            if (isNaN(n) || n <= 0) {
+                resultDiv.textContent = "⚠️ Please enter a valid positive number.";
+                return;
+            }
+
+            let fibSequence = [];
+            for (let i = 0; i < n; i++) {
+                if (i === 0) {
+                    fibSequence.push(0);
+                } else if (i === 1) {
+                    fibSequence.push(1);
+                } else {
+                    fibSequence.push(fibSequence[i - 1] + fibSequence[i - 2]);
+                }
+            }
+
+            resultDiv.textContent = `🔢 Fibonacci Sequence (${n} terms): ${fibSequence.join(', ')}`;
+        }
+    </script>
+
+</body>
+</html>
