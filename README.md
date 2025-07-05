@@ -24,7 +24,7 @@ Just clone this repository:
 bash 
 Copy 
 Edit 
-git clone 
+git clone https://github.com/avanish2006/Fibonacci-Sequence-Generator.git 
 Open the index.html file on your web browser. 
 
 Example Output 
